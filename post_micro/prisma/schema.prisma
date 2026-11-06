@@ -11,3 +11,15 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Post {
+  id         Int      @id @default(autoincrement())
+  user_id    String
+  title      String   @db.VarChar(255)
+  content    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+
+  @@index([user_id])
+}
